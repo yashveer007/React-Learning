@@ -20,9 +20,9 @@ function App() {
 
   const handleSubmit = (event) =>{
     event.preventDefault();
-    const name = nameRef.current.value;
-    const email = emailRef.current.value;
-    const password = passwordRef.current.value;
+    // const name = nameRef.current.value;
+    // const email = emailRef.current.value;
+    // const password = passwordRef.current.value;
     console.log("Submitted data: ", formData);
     setFormData({
       name:'',
