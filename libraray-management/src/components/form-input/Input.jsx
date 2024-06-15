@@ -19,7 +19,7 @@ export default forwardRef(function Input({
         placeholder= {placeholder}
         name={name}
         value={value}
-        className={` ${className}`}
+        className={`ml-5 my-4 border-2 ${className}`}
         ref={ref}
         id={id}
         onChange={onChange}

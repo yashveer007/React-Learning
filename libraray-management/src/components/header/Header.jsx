@@ -1,7 +1,9 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Header() {
+    const navigate = useNavigate();
+
     return (
         <nav className='w-full  bg-cyan-700 flex justify-between items-center sticky'>
             <div className='flex items-center'>
@@ -28,7 +30,12 @@ function Header() {
                 </ul>
             </div>
             <div>
-                <button className='bg-blue-500 text-white rounded-xl mx-3 my-4 px-[10px] py-[5px]'>Login/SignUp</button>
+                <button 
+                    className='bg-blue-500 text-white rounded-xl mx-3 my-4 px-[10px] py-[5px]'
+                    onClick={() => {navigate("/login")}}
+                >
+                    Login/SignUp
+                </button>
             </div>
         </nav>
     )

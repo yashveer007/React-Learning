@@ -3,13 +3,15 @@ import React from "react";
 export default function Button({ text,
   type,
   className,
+  onClick,
   ...props
  }) {
   return (
     <div>
       <button 
         type={type}
-        className={`${className}`}
+        className={`rounded-md py-2 ${className}`}
+        onClick={onClick}
         {...props}
       >
         {text}

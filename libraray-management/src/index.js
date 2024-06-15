@@ -7,6 +7,7 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 import Books from './components/feature/Books';
 import Authors from './components/feature/Authors';
 import Home from './components/feature/Home';
+import LoginRegister from './components/login/LoginRegister';
 
 const commonCss = "bg-cyan-500 w-full h-96";
 
@@ -16,6 +17,7 @@ const router = createBrowserRouter(
       <Route path='' element = {<Home commonCss = {commonCss}/>}/>
       <Route path='books' element = {<Books  commonCss = {commonCss}/>}/>
       <Route path='authors' element = {<Authors  commonCss = {commonCss}/>}/>
+      <Route path='login' element = {<LoginRegister  commonCss = {commonCss}/>}/>
     </Route>
   )
 )

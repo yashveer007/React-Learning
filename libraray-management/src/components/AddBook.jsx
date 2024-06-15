@@ -19,7 +19,7 @@ export default function AddBook() {
     }
 
   return (
-    <div className='items-center'>
+    <div className='place-items-center'>
         <form onSubmit={formHandler}>
             <Input 
                 type="text"
