@@ -4,6 +4,7 @@ import Login from "./Login";
 import Register from "./Register";
 
 export default function LoginRegister() {
+  
   const [isLogin, setIsLogin] = useState(true);
 
   return (

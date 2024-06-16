@@ -4,12 +4,14 @@ import Button from "../form-input/Button";
 import { doLogin } from "../../services/loginservice";
 import { useDispatch } from "react-redux";
 import { addUserName } from "../../sclices/loginSlice";
+import { useNavigate } from 'react-router-dom'
 
 export default function () {
   const nameref = useRef("");
   const passwordRef = useRef("");
   const [user, setUser] = useState({});
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onChangehandler = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -18,8 +20,8 @@ export default function () {
   const submitHandler = async (e) => {
     e.preventDefault();
     let data = await doLogin(user);
-    console.log("data : ", data);
     dispatch(addUserName(data));
+    navigate("/")
   };
 
   return (

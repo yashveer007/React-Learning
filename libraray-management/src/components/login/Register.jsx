@@ -3,13 +3,21 @@ import Input from "../form-input/Input";
 import Button from "../form-input/Button";
 import { useSelector } from "react-redux";
 import { doRegister } from "../../services/loginservice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addUserName } from '../../sclices/loginSlice'
 
 export default function Login() {
+
   const userNameRef = useRef("");
   const emailRef = useRef("");
   const addressRef = useRef("");
   const passwordRef = useRef("");
   const nameRef = useRef("");
+
+  // dispatching value to redux store
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   //const { name } = useSelector((state) => state.login);
  // console.log("selector: ", name);
@@ -23,8 +31,9 @@ export default function Login() {
   const submitHandler = async (e) => {
     e.preventDefault();
     console.log("user: ", user);
-    let data = await doRegister(user);
-    console.log(data);
+    let { userName } = await doRegister(user);
+    dispatch(addUserName(userName));
+    navigate("/")
   };
 
   return (
@@ -36,7 +45,7 @@ export default function Login() {
         <form onSubmit={submitHandler}>
           <Input
             label="Username"
-            name="username"
+            name="userName"
             type="text"
             ref={userNameRef}
             placeholder="Username"
