@@ -1,24 +1,31 @@
 import React, { useRef, useState } from "react";
 import Input from "../form-input/Input";
 import Button from "../form-input/Button";
+import { useSelector } from "react-redux";
+import { doRegister } from "../../services/loginservice";
 
 export default function Login() {
-
-  const nameRef = useRef("");
+  const userNameRef = useRef("");
   const emailRef = useRef("");
   const addressRef = useRef("");
   const passwordRef = useRef("");
+  const nameRef = useRef("");
+
+  //const { name } = useSelector((state) => state.login);
+ // console.log("selector: ", name);
 
   const [user, setUser] = useState({});
 
   const onChangeHandler = (e) => {
-    setUser({...user, [e.target.name] : e.target.value})
-  }
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    console.log(user);
-  }
+    console.log("user: ", user);
+    let data = await doRegister(user);
+    console.log(data);
+  };
 
   return (
     <div className="flex flex-col items-center">
@@ -31,8 +38,16 @@ export default function Login() {
             label="Username"
             name="username"
             type="text"
-            ref={nameRef}
+            ref={userNameRef}
             placeholder="Username"
+            onChange={onChangeHandler}
+          />
+          <Input
+            label="Name"
+            name="name"
+            type="text"
+            ref={nameRef}
+            placeholder="Full Name"
             onChange={onChangeHandler}
           />
           <Input

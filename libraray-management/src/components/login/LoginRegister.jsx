@@ -6,10 +6,6 @@ import Register from "./Register";
 export default function LoginRegister() {
   const [isLogin, setIsLogin] = useState(true);
 
-  //   const onClickHandler = () => {
-  //     setIsLogin(flase);
-  //   }
-
   return (
     <div className="bg-gray-300">
       <div className="flex flex-col items-center px-5 m-3">
