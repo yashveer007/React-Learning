@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit'
 
 
 const initialState =  {
-  name : ''
+  name : '',
+  isLogin : false
 }
 
 export const counterSlice = createSlice({
@@ -10,7 +11,9 @@ export const counterSlice = createSlice({
   initialState,
   reducers: {
     addUserName: (state, action) => {
-        state.name = action.payload;
+      console.log("payload",action.payload)
+        state.name = action.payload.name;
+        state.isLogin = action.payload.isLogin;
     },
   }
 })

@@ -19,8 +19,8 @@ export default function () {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    let data = await doLogin(user);
-    dispatch(addUserName(data));
+    let name = await doLogin(user);
+    dispatch(addUserName({name,isLogin:true}));
     navigate("/")
   };
 

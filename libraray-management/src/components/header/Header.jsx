@@ -5,8 +5,10 @@ import { Link, useNavigate } from "react-router-dom";
 function Header() {
   const navigate = useNavigate();
 
-  //fecthing value from the redux store 
-  const { name } = useSelector((state) => state.login);
+  //fecthing value from the redux store
+  const { name, isLogin } = useSelector((state) => state.login);
+
+  const bookArray = ["AddBook", "EditBook", "DeleteBook"];
 
   return (
     <nav className="w-full  bg-cyan-700 flex justify-between items-center sticky">
@@ -24,7 +26,13 @@ function Header() {
             <Link to="">Home</Link>
           </li>
           <li className="mx-[10px]">
-            <Link to="books">Books</Link>
+            <select>
+              {bookArray.map((item, index) => 
+                <option>
+                  <Link to="books">{item}</Link>
+                </option>
+              )}
+            </select>
           </li>
           <li className="mx-[10px]">
             <Link to="authors">Authors</Link>
@@ -32,17 +40,18 @@ function Header() {
         </ul>
       </div>
       <div>
-        {
-           !name ? <button
-                className="bg-blue-500 text-white rounded-xl mx-3 my-4 px-[10px] py-[5px]"
-                onClick={() => {
-                navigate("/login");
-                }}
-            >
-                Login/SignUp
-            </button>
-            : <h2 className="font-extrabold text-lg text-white">Welcome {name}</h2>
-        }
+        {!name && !isLogin ? (
+          <button
+            className="bg-blue-500 text-white rounded-xl mx-3 my-4 px-[10px] py-[5px]"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Login/SignUp
+          </button>
+        ) : (
+          <h2 className="font-extrabold text-lg text-white">Welcome {name}</h2>
+        )}
       </div>
     </nav>
   );
